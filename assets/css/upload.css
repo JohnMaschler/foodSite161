@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+.navbar {
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.navbar ul {
+    list-style-type: none;
+    width: 100%;
+}
+
+.navbar li a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.navbar li a:hover {
+    background-color: #555;
+}
+.recipe-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.recipe-form label {
+    display: block;
+    margin-top: 20px;
+}
+
+.recipe-form input[type="text"],
+.recipe-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.recipe-form .ingredient {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.recipe-form .ingredient input[type="text"] {
+    flex: 1;
+    margin-right: 5px;
+}
+
+.recipe-form .ingredient button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.recipe-form .ingredient button:hover {
+    background-color: #0056b3;
+}
+
+.recipe-form button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.recipe-form button[type="submit"]:hover {
+    background-color: #218838;
+}

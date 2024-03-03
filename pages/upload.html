@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Recipe - Foreign Flavors</title>
+    <link rel="stylesheet" href="../assets/css/upload.css">
+    <script defer src="../assets/js/upload.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="search.html">Search</a></li>
+            <li><a href="upload.html">Upload Recipe</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+    <form id="recipe-form" class="recipe-form">
+        <label for="title">Recipe Title:</label>
+        <input type="text" id="title" name="title" required>
+
+        <div id="ingredients-list">
+            <div class="ingredient">
+                <!-- <input type="text" name="ingredient_name[]" placeholder="Ingredient name" required>
+                <input type="text" name="ingredient_qty[]" placeholder="Quantity" required> -->
+                <button type="button" onclick="addIngredient()">Add Ingredient</button>
+            </div>
+        </div>
+
+        <label for="directions">Cooking Directions:</label>
+        <textarea id="directions" name="directions" rows="4" required></textarea>
+
+        <label for="tags">Tags:</label>
+        <input type="text" id="tags" name="tags" placeholder="e.g., Vegan, Dessert, Spicy">
+
+        <button type="submit">Post</button>
+    </form>
+</body>
+</html>
