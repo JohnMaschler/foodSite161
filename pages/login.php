@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<div class="alert alert-danger">' . $login_err . '</div>';
         }        
         ?>
-        <form action="login.php" method="post"> <!-- handle login logic above -->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> <!-- handle login logic above -->
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>

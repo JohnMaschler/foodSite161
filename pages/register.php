@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <h2>Register</h2>
-        <form action="register.php" method="post"> <!-- this will later handle the registration logic -->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> <!-- this will later handle the registration logic -->
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>

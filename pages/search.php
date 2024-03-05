@@ -10,10 +10,10 @@
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="explore.html">Explore</a></li>
-            <li><a href="search.html">Search</a></li>
-            <li><a href="upload.html">Upload Recipe</a></li>
-            <li><a href="profile.html">Profile</a></li>
+            <li><a href="explore.php">Explore</a></li>
+            <li><a href="search.php">Search</a></li>
+            <li><a href="upload.php">Upload Recipe</a></li>
+            <li><a href="profile.php">Profile</a></li>
         </ul>
     </nav>
     <div class="search-container">
