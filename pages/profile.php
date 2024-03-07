@@ -72,29 +72,18 @@ $stmt->close();
             <div class="recipes-container">
                 <?php foreach ($user_recipes as $recipe): ?>
                     <div class="recipe-card">
-                        <h4 class="recipe-title"><?php echo htmlspecialchars($recipe["title"]); ?></h4>
-                        <div class="recipe-body">
-                        <p class="recipe-ingredients"><strong>Ingredients:</strong></p>
-                        <ul>
-                            <?php
-                            $ingredient_array = explode(',', $recipe["ingredients"]); // Split ingredients into an array
-                            $amounts_array = explode(',', $recipe["amounts"]); // Split amounts into an array
-                            foreach ($ingredient_array as $index => $ingredient) {
-                                // Check if there is a corresponding amount for this ingredient
-                                $amount = isset($amounts_array[$index]) ? $amounts_array[$index] : '';
-                                echo "<li>" . htmlspecialchars(trim($amount)) . " of " . htmlspecialchars(trim($ingredient)) . "</li>"; // Display each amount with ingredient
-                            }
-                            ?>
-                        </ul>
-                            <p class="recipe-directions"><strong>Directions:</strong><br><?php echo nl2br(htmlspecialchars($recipe["directions"])); ?></p>
-                            <p class="recipe-tags"><strong>Tags:</strong>
+                        <h4 class="recipe-title">
+                            <a href="recipe.php?recipe_id=<?php echo $recipe["recipe_id"]; ?>" class="recipe-link">
+                                <?php echo htmlspecialchars($recipe["title"]); ?>
+                            </a>
+                        </h4>
+                        <div class="recipe-tags">
                             <?php
                             $tags = explode(',', $recipe["tags"]); // Split tags into an array
                             foreach ($tags as $tag) {
-                                echo "<span>" . htmlspecialchars(trim($tag)) . "</span>"; // Display each tag
+                                echo "<a href='search.php?tag=" . urlencode(trim($tag)) . "' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a>"; // Display each tag as a link
                             }
                             ?>
-                        </p>    
                         </div>
                     </div>
                 <?php endforeach; ?>

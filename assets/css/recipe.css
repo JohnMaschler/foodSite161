@@ -1,0 +1,41 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+}
+
+.recipe {
+    max-width: 800px;
+    margin: auto;
+}
+
+.recipe-title {
+    color: #333;
+    text-align: center;
+}
+
+.author-date {
+    text-align: center;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.ingredients, .directions, .tags {
+    margin-bottom: 20px;
+}
+
+.ingredients ul, .directions p, .tags p {
+    background: #f7f7f7;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.tag {
+    display: inline-block;
+    background: #C5E1A5;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    font-size: 0.8em;
+}

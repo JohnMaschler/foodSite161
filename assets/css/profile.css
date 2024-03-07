@@ -68,6 +68,7 @@ body {
     display: block;
     margin: 10px 0;
 }
+
 .recipes-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
@@ -76,7 +77,7 @@ body {
 }
 
 .recipe-card {
-    background: #ffffff;
+    background: #F7F7F7; /* Light grey background for the card */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden; /* Ensures nothing spills out of the card */
@@ -88,41 +89,46 @@ body {
 }
 
 .recipe-title {
-    background-color: #333;
-    color: #ffffff;
+    background-color: #aecfcf; /* Desaturated blue background for title */
+    color: #1e2a37; /* Navy blue text color for title */
     padding: 16px;
     margin: 0;
     font-size: 1.5em; /* Larger title font */
 }
 
-.recipe-ingredients,
-.recipe-directions,
+.recipe-link {
+    text-decoration: none; /* No underline */
+    color: #2C3E50; /* Navy blue text color to match the title */
+    display: block; /* Makes the whole title area clickable */
+}
+
+.recipe-link:hover {
+    text-decoration: underline; /* Adds an underline on hover for visual feedback */
+}
+
 .recipe-tags {
     padding: 16px;
     line-height: 1.6; /* More readable line spacing */
-    color: #333;
-}
-
-.recipe-tags {
-    background-color: #f7f7f7; /* Light grey background for tags */
+    background-color: #F7F7F7; /* Same as card background */
     border-top: 1px solid #ddd; /* Separator line */
 }
 
-/* Tag list styling */
-.recipe-tags strong {
-    font-weight: normal; /* Normal weight for the word 'Tags' */
-    color: #555;
-}
-
-.recipe-tags span {
-    background-color: #e0e0e0;
-    color: #333;
+.tag-link {
+    background-color: #ffffff; /* Pastel green background for tags */
+    color: #4C4C4C; /* Dark grey text color for tags */
     padding: 5px 10px;
-    border-radius: 5px;
+    border-radius: 15px; /* More rounded corners for bubble effect */
     display: inline-block;
     margin-right: 5px;
-    margin-top: 5px;
+    margin-bottom: 5px;
     font-size: 0.8em;
+    text-decoration: none; /* Remove underline from links */
+    border: 1px solid #465e48; /* Border for tags */
+    transition: background-color 0.3s; /* Smooth background transition on hover */
+}
+
+.tag-link:hover {
+    background-color: #aecfcf; /* Slightly darker on hover for visual feedback */
 }
 
 /* Responsive adjustments */
@@ -132,37 +138,8 @@ body {
     }
 }
 
-/* If you want to add more style for mobile devices */
 @media (max-width: 480px) {
     .recipes-container {
         grid-template-columns: 1fr; /* Full width cards on mobile */
     }
-}
-
-/* Reset list styles and add padding for indentation */
-ul {
-    list-style: none; /* Removes default list styling */
-    padding-left: 20px; /* Indent the list */
-    margin-left: 16px;
-}
-
-/* Add custom bullet points */
-ul li::before {
-    content: '•'; /* Unicode character for bullet point */
-    color: #333; /* Bullet point color */
-    display: inline-block; /* Needed to add margin */
-    width: 1em; /* Space before bullet */
-    margin-left: -1em; /* Align with the content outside */
-}
-
-/* Style for the ingredient list */
-.recipe-ingredients + ul {
-    padding: 0 16px 16px 16px;
-}
-
-/* Style for individual list items */
-ul li {
-    margin-bottom: 0.5em;
-    color: #333;
-    font-size: 0.9em;
 }
