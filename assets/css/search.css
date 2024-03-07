@@ -79,3 +79,80 @@ button:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 }
+
+
+
+.recipes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
+    gap: 20px; /* Space between cards */
+    padding: 20px; /* Padding around the grid */
+}
+
+.recipe-card {
+    background: #F7F7F7; /* Light grey background for the card */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden; /* Ensures nothing spills out of the card */
+    transition: transform 0.3s ease-in-out;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.recipe-title {
+    background-color: #aecfcf; /* Desaturated blue background for title */
+    color: #1e2a37; /* Navy blue text color for title */
+    padding: 16px;
+    margin: 0;
+    font-size: 1.5em; /* Larger title font */
+}
+
+.recipe-link {
+    text-decoration: none; /* No underline */
+    color: #2C3E50; /* Navy blue text color to match the title */
+    display: block; /* Makes the whole title area clickable */
+}
+
+.recipe-link:hover {
+    text-decoration: underline; /* Adds an underline on hover for visual feedback */
+}
+
+.recipe-tags {
+    padding: 16px;
+    line-height: 1.6; /* More readable line spacing */
+    background-color: #F7F7F7; /* Same as card background */
+    border-top: 1px solid #ddd; /* Separator line */
+}
+
+.tag-link {
+    background-color: #ffffff; /* Pastel green background for tags */
+    color: #4C4C4C; /* Dark grey text color for tags */
+    padding: 5px 10px;
+    border-radius: 15px; /* More rounded corners for bubble effect */
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    text-decoration: none; /* Remove underline from links */
+    border: 1px solid #465e48; /* Border for tags */
+    transition: background-color 0.3s; /* Smooth background transition on hover */
+}
+
+.tag-link:hover {
+    background-color: #aecfcf; /* Slightly darker on hover for visual feedback */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .recipes-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .recipes-container {
+        grid-template-columns: 1fr; /* Full width cards on mobile */
+    }
+}

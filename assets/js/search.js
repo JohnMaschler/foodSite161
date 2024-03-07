@@ -1,5 +1,5 @@
 function performSearch() {
-    // Get the search input value
+    //get the search input value
     var searchInput = document.getElementById('search-input').value;
 
     console.log("Search for:", searchInput);
