@@ -12,7 +12,7 @@ include '../db/config.php';
 //fetch recipe information based on the recipe_id passed in the URL
 if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
     $recipeId = $_GET['recipe_id'];
-    $stmt = $conn->prepare("SELECT r.title, r.ingredients, r.amounts, r.directions, r.tags, r.posted_at, u.username FROM recipes r LEFT JOIN users u ON r.user_id = u.user_id WHERE r.recipe_id = ?");
+    $stmt = $conn->prepare("SELECT r.title, r.ingredients, r.amounts, r.directions, r.tags, r.posted_at, r.image_path, u.username FROM recipes r LEFT JOIN users u ON r.user_id = u.user_id WHERE r.recipe_id = ?");
     $stmt->bind_param("i", $recipeId);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -20,6 +20,7 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
     $stmt->close();
 } else {
     //redirect to another page or show an error if the recipe_id is not set or not valid
+    header("location: profile.php");
 }
 ?>
 
@@ -36,6 +37,9 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
     <!-- the recipe array has been filled by the PHP code above -->
     <article class="recipe">
         <h1 class="recipe-title"><?php echo htmlspecialchars($recipe['title']); ?></h1>
+        <?php if(!empty($recipe['image_path'])): ?>
+            <img src="<?php echo htmlspecialchars($recipe['image_path']); ?>" alt="Image of <?php echo htmlspecialchars($recipe['title']); ?>" class="recipe-image">
+        <?php endif; ?>
         <p class="author-date">Posted by <?php echo htmlspecialchars($recipe['username']); ?> on <?php echo date('F j, Y', strtotime($recipe['posted_at'])); ?></p>
         <section class="ingredients">
             <h2>Ingredients</h2>
@@ -44,7 +48,7 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
                 $ingredients = explode(',', $recipe['ingredients']);
                 $amounts = explode(',', $recipe['amounts']);
                 foreach ($ingredients as $index => $ingredient) {
-                    echo "<li>" . htmlspecialchars($amounts[$index]) . " " . htmlspecialchars($ingredient) . "</li>";
+                    echo "<li>" . htmlspecialchars($amounts[$index]) . " of " . htmlspecialchars($ingredient) . "</li>";
                 }
                 ?>
             </ul>

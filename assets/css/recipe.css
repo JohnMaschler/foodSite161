@@ -39,3 +39,11 @@ body {
     margin-top: 5px;
     font-size: 0.8em;
 }
+
+.recipe-image {
+    display: block;
+    max-width: 40%; /* ensures image is not larger than its container */
+    height: auto; /* maintains aspect ratio */
+    border-radius: 8px; /* optional: rounds the corners of the image??? do we want this*/
+    margin: 0 auto 20px; /* centers the image and adds space below */
+}

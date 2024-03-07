@@ -44,8 +44,8 @@ $stmt->close();
 <body>
     <nav class="navbar">
         <ul>
-            <li><a href="explore.html">Explore</a></li>
-            <li><a href="search.html">Search</a></li>
+            <li><a href="explore.php">Explore</a></li>
+            <li><a href="search.php">Search</a></li>
             <li><a href="upload.php">Upload Recipe</a></li>
             <li><a href="profile.php">Profile</a></li>
         </ul>
@@ -62,7 +62,7 @@ $stmt->close();
             
             <!-- The file input field is hidden; it's triggered by the button above -->
             <form action="upload_profile_pic.php" method="post" enctype="multipart/form-data">
-                <input type="file" name="profilePic" id="profile-pic-input" style="display:none;" onchange="this.form.submit()">
+                <input type="file" name="profilePic" id="profile-pic-input" style="display:none;" onchange="this.form.submit()" accept="image/*">
                 <input type="hidden" name="userId" value="<?php echo $userId; ?>">
             </form>
         </section>

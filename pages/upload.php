@@ -2,11 +2,13 @@
 session_start();
 include '../db/config.php';
 
-// Ensure the user is logged in
+//if user not logged in, send to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
+$imagePath = '';
 
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -17,10 +19,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $directions = $_POST['directions'];
     $tags = $_POST['tags'];
     $userId = $_SESSION["user_id"]; // User id is stored in session
+    
+    //if they add an image, process it
+    if (isset($_FILES['recipeImage']) && $_FILES['recipeImage']['error'] == 0){
+        $target_directory = "../uploads/";
+        $imageFileType = strtolower(pathinfo($_FILES['recipeImage']['name'], PATHINFO_EXTENSION));
+        $target_file = $target_directory . uniqid() . "." . $imageFileType;
+
+        //image validation
+        $checkImg = getimagesize($_FILES["recipeImage"]["tmp_name"]);
+        if($checkImg !== false && $_FILES["recipeImage"]["size"] <= 5000000 && in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])){
+            if (move_uploaded_file($_FILES["recipeImage"]["tmp_name"], $target_file)){
+                //image path that will be stored in database
+                $imagePath = $target_file;
+                echo $imagePath;
+            }
+            else{
+                echo "error uploading the image";
+                exit;
+            }
+        }
+        else{
+            echo "Invalid file. Only JPG, JPEG, PNG & GIF files are allowed and the file must be under 5MB.";
+            exit;
+        }
+
+    }
 
     // Prepare an INSERT statement to insert info into recipes table
-    $stmt = $conn->prepare("INSERT INTO recipes (user_id, title, ingredients, amounts, directions, tags) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("isssss", $userId, $title, $ingredients, $amounts, $directions, $tags);
+    $stmt = $conn->prepare("INSERT INTO recipes (user_id, title, ingredients, amounts, directions, tags, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("issssss", $userId, $title, $ingredients, $amounts, $directions, $tags, $imagePath);
 
     // Attempt to execute the statement
     if ($stmt->execute()){
@@ -55,7 +83,7 @@ $conn->close();
             <li><a href="profile.php">Profile</a></li>
         </ul>
     </nav>
-    <form id="recipe-form" class="recipe-form" action="upload.php" method="post">
+    <form id="recipe-form" class="recipe-form" action="upload.php" method="post" enctype="multipart/form-data">
         <label for="title">Recipe Title:</label>
         <input type="text" id="title" name="title" required>
 
@@ -70,6 +98,9 @@ $conn->close();
 
         <label for="tags">Tags:</label>
         <input type="text" id="tags" name="tags" placeholder="e.g., Vegan, Dessert, Spicy">
+
+        <span for="recipeImage">Upload a picture of your meal here :)</span>
+        <input type="file" id="recipeImage" name="recipeImage" accept="image/*">
 
         <button type="submit">Post</button>
     </form>
