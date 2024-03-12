@@ -20,6 +20,7 @@ if (isset($_GET["tag"])){
     $searched_recipes = $result->fetch_all(MYSQLI_ASSOC);
     $stmt->close();
 }
+$conn->close();
 ?>
 
 

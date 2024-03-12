@@ -1,9 +1,9 @@
 <?php
-// Start output buffering
+//start output buffering (don't forget to flush it at the end)
 ob_start();
 include '../db/config.php'; // Adjust the path as needed
 
-// Check if the form is submitted
+//check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);

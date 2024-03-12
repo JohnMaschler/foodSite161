@@ -1,18 +1,18 @@
 <?php
-session_start(); // Start the session
+session_start(); //start the session
 
-// Check if the user is logged in, if not then redirect to login page
+//check if the user is logged in, if not then redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
 
-include '../db/config.php'; // Include your database config file
+include '../db/config.php'; // database config file
 
-// Variable to store user's recipes
+//variable to store user's recipes
 $user_recipes = [];
 
-// Fetch user information based on session user_id
+//fetch user information based on session user_id
 $userId = $_SESSION["user_id"];
 $stmt = $conn->prepare("SELECT username, profile_pic FROM users WHERE user_id = ?");
 $stmt->bind_param("i", $userId);
@@ -21,7 +21,7 @@ $stmt->bind_result($username, $profilePic);
 $stmt->fetch();
 $stmt->close();
 
-// Fetch user's recipes from the database
+//fetch user's recipes from the database
 $stmt = $conn->prepare("SELECT recipe_id, title, ingredients, amounts, directions, tags FROM recipes WHERE user_id = ?");
 $stmt->bind_param("i", $userId);
 $stmt->execute();
@@ -30,6 +30,21 @@ $result = $stmt->get_result();
 $user_recipes = $result->fetch_all(MYSQLI_ASSOC);
 $stmt->close();
 
+//fetch pinned recipes from the database
+$pinned_stmt = $conn->prepare("
+    SELECT r.recipe_id, r.title, r.ingredients, r.amounts, r.directions, r.tags
+    FROM pinned_recipes pr
+    JOIN recipes r ON pr.recipe_id = r.recipe_id
+    WHERE pr.user_id = ?
+");
+$pinned_stmt->bind_param("i", $userId);
+$pinned_stmt->execute();
+$pinned_result = $pinned_stmt->get_result();
+
+$pinned_recipes = $pinned_result->fetch_all(MYSQLI_ASSOC);
+$pinned_stmt->close();
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -53,12 +68,14 @@ $stmt->close();
 
     <main class="profile-content">
         <section class="user-info">
-            <!--had to prepend project so it doesn't add pages to the path-->
+            <!--prepend project so it doesn't add '/pages' to the path-->
             <img src="/csen161finalproj/<?php echo htmlspecialchars($profilePic); ?>" alt="———————————————————————————press the button below to add an image" class="profile-pic">
             <h2 class="username"><?php echo htmlspecialchars($username); ?></h2>
             
-            <!-- Add a button that triggers the file input -->
+            <!--button that triggers the file input -->
             <button onclick="document.getElementById('profile-pic-input').click()">Change Profile Picture</button>
+
+            <hr />
             
             <!-- The file input field is hidden; it's triggered by the button above -->
             <form action="upload_profile_pic.php" method="post" enctype="multipart/form-data">
@@ -67,29 +84,45 @@ $stmt->close();
             </form>
         </section>
 
-        <section class="user-recipes">
-            <h3>My Recipes</h3>
-            <div class="recipes-container">
-                <?php foreach ($user_recipes as $recipe): ?>
-                    <div class="recipe-card">
-                        <h4 class="recipe-title">
-                            <a href="recipe.php?recipe_id=<?php echo $recipe["recipe_id"]; ?>" class="recipe-link">
-                                <?php echo htmlspecialchars($recipe["title"]); ?>
-                            </a>
-                        </h4>
-                        <div class="recipe-tags">
-                            <?php
-                            $tags = explode(',', $recipe["tags"]); // Split tags into an array
-                            foreach ($tags as $tag) {
-                                echo "<a href='search.php?tag=" . urlencode(trim($tag)) . "' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a>"; // Display each tag as a link
-                            }
-                            ?>
+        <div class="recipes-section">
+            <section class="user-recipes">
+                <h3>My Recipes</h3>
+                <div class="recipes-container">
+                    <?php foreach ($user_recipes as $recipe): ?>
+                        <div class="recipe-card">
+                            <h4 class="recipe-title">
+                                <a href="recipe.php?recipe_id=<?php echo $recipe["recipe_id"]; ?>" class="recipe-link">
+                                    <?php echo htmlspecialchars($recipe["title"]); ?>
+                                </a>
+                            </h4>
+                            <div class="recipe-tags">
+                                <?php
+                                $tags = explode(',', $recipe["tags"]); //split tags into an array
+                                foreach ($tags as $tag) {
+                                    echo "<a href='search.php?tag=" . urlencode(trim($tag)) . "' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a>"; //display each tag as a link
+                                }
+                                ?>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </section>
-
+                    <?php endforeach; ?>
+                </div>
+            </section>
+            <section class="pinned-recipes">
+                <h3>Recipes You've Pinned</h3>
+                <div class="recipes-container">
+                    <?php foreach ($pinned_recipes as $recipe): ?>
+                        <div class="recipe-card">
+                            <h4 class="recipe-title">
+                                <a href="recipe.php?recipe_id=<?php echo $recipe["recipe_id"]; ?>" class="recipe-link">
+                                    <?php echo htmlspecialchars($recipe["title"]); ?>
+                                </a>
+                            </h4>
+                            <!-- display recipe tags or other info we want here... for now it's just title linked to the recipe-->
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </section>
+        </div>
     </main>
 </body>
 </html>
