@@ -5,13 +5,13 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 20px;
     padding: 0;
 }
 
 .navbar {
-    background-color: #333;
+    background-color:  #325e8b;
     color: white;
     position: fixed;
     top: 0;
@@ -20,11 +20,14 @@ body {
     width: 200px;
     overflow: auto;
     overflow-x: hidden;
+    font-size: large;
+    padding-top: 1.5rem;
 }
 
 .navbar ul {
     list-style-type: none;
     width: 100%;
+    
 }
 
 .navbar li a {
@@ -35,7 +38,7 @@ body {
 }
 
 .navbar li a:hover {
-    background-color: #555;
+    background-color: #000000;
 }
 
 .recipe-feed {
@@ -64,8 +67,8 @@ body {
 }
 
 .recipe-title {
-    background-color: #aecfcf;
-    color: #1e2a37;
+    background-color: #325e8b;
+    color: #ffffff;
     font-size: 1.5em;
 }
 
@@ -92,8 +95,8 @@ body {
 }
 
 .tag-link:hover {
-    background-color: #aecfcf;
-    color: #1e2a37;
+    background-color: #325e8b;
+    color: white;
 }
 
 .recipe-ingredients {
@@ -106,8 +109,8 @@ body {
 .see-more-link {
     display: block;
     text-align: center;
-    background-color: #aecfcf;
-    color: #1e2a37;
+    background-color: #325e8b;
+    color: white;
     padding: 10px;
     text-decoration: none;
     border-bottom-left-radius: 8px;
