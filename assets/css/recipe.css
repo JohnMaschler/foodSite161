@@ -1,5 +1,5 @@
 body, * {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     line-height: 1.6;
     /* margin: 20px; */
     box-sizing: border-box;
@@ -49,7 +49,7 @@ body, * {
 }
 
 .navbar {
-    background-color: #333;
+    background-color:  #325e8b;
     color: white;
     position: fixed;
     top: 0;
@@ -58,11 +58,15 @@ body, * {
     width: 200px;
     overflow: auto;
     overflow-x: hidden;
+    font-size: large;
+    padding-top: 1.5rem;
+    line-height: 1.2;
 }
 
 .navbar ul {
     list-style-type: none;
     width: 100%;
+    line-height: 1.2;
 }
 
 .navbar li a {
@@ -70,10 +74,11 @@ body, * {
     text-decoration: none;
     color: white;
     display: block;
+    line-height: 1.2;
 }
 
 .navbar li a:hover {
-    background-color: #555;
+    background-color: #000000;
 }
 
 button{
@@ -103,7 +108,8 @@ button:hover{
 }
 
 .tag-link:hover {
-    background-color: #aecfcf; /* Slightly darker on hover for visual feedback */
+    background-color: #325e8b; /* Slightly darker on hover for visual feedback */
+    color: white;
 }
 
 @media (max-width: 1000px) { /* Or any appropriate width */
