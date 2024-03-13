@@ -81,7 +81,7 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
             <p><?php
                 $tags = explode(',', $recipe['tags']);
                 foreach ($tags as $tag) {
-                    echo "<a href='search.php?tag=" . urlencode(trim($tag)) . "' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a> ";
+                    echo "<a href='search.php?search=" . urlencode(trim($tag)) . "&search_type=tag' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a>";
                 }                
             ?></p>
         </section>

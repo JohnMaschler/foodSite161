@@ -58,7 +58,7 @@ $stmt->close();
             <?php endif; ?>
             <div class="recipe-tags">
                 <?php foreach(array_slice(explode(',', $recipe['tags']), 0, 3) as $tag): ?>
-                    <a href="search.php?tag=<?= urlencode(trim($tag)) ?>" class="tag-link"><?= htmlspecialchars(trim($tag)) ?></a>
+                    <a href="search.php?search=<?= urlencode(trim($tag)) ?>&search_type=tag" class="tag-link"><?= htmlspecialchars(trim($tag)) ?></a>
                 <?php endforeach; ?>
             </div>
             <p class="recipe-ingredients">Includes: <?= implode(', ', array_slice(explode(',', $recipe['ingredients']), 0, 2)) ?></p>

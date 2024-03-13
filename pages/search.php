@@ -76,7 +76,7 @@ $stmt->close();
                         <?php
                         $tags = explode(',', $recipe["tags"]); //split tags into an array
                         foreach ($tags as $tag) {
-                            echo "<a href='search.php?tag=" . urlencode(trim($tag)) . "' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a>"; // Display each tag as a link
+                            echo "<a href='search.php?search=" . urlencode(trim($tag)) . "&search_type=tag' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a>";
                         }
                         ?>
                     </div>
