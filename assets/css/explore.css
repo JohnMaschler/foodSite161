@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 200px;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.navbar ul {
+    list-style-type: none;
+    width: 100%;
+}
+
+.navbar li a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.navbar li a:hover {
+    background-color: #555;
+}
+
+.recipe-feed {
+    margin-left: 220px; /* Adjusted from profile content to better fit the recipe feed */
+    padding: 20px;
+}
+
+.recipe-card {
+    background: #F7F7F7;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 20px; /* Space between recipe cards */
+    transition: transform 0.3s ease-in-out;
+}
+
+.recipe-card:hover {
+    transform: translateY(-5px);
+}
+
+.recipe-title, .recipe-user, .recipe-tags, .recipe-ingredients {
+    padding: 15px;
+    margin: 0;
+    background-color: #ffffff; /* Lighter background for readability */
+    border-bottom: 1px solid #ddd; /* Add separation between elements */
+}
+
+.recipe-title {
+    background-color: #aecfcf;
+    color: #1e2a37;
+    font-size: 1.5em;
+}
+
+.recipe-image {
+    width: 300px; /* Adjust based on your preference */
+    max-width: 100%; /* Ensures image is not larger than the card */
+    height: auto; /* Maintain aspect ratio */
+    border-bottom: 1px solid #ddd;
+    display: block; /* Centers the image in the card */
+    margin: 0 auto; /* Centers the image */
+}
+
+.tag-link {
+    background-color: #ffffff;
+    color: #4C4C4C;
+    padding: 5px 10px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    text-decoration: none;
+    border: 1px solid #aecfcf;
+}
+
+.tag-link:hover {
+    background-color: #aecfcf;
+    color: #1e2a37;
+}
+
+.recipe-ingredients {
+    padding-left: 15px; /* Align with other content */
+    padding-bottom: 15px;
+    background-color: #ffffff; /* Match other card elements */
+    border-bottom: 1px solid #ddd; /* Consistent with other elements */
+}
+
+.see-more-link {
+    display: block;
+    text-align: center;
+    background-color: #aecfcf;
+    color: #1e2a37;
+    padding: 10px;
+    text-decoration: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.see-more-link:hover {
+    background-color: #89a6a6;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .recipe-feed {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .navbar {
+        position: relative; /* Change nav position on smaller screens */
+        width: 100%;
+        height: auto;
+        top: 0;
+    }
+
+    .navbar ul {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .navbar li a {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+}
+
+
+
+
+
+.mini-profile-pic {
+    width: 30px; /* Adjust based on your design */
+    height: 30px; /* Adjust based on your design */
+    border-radius: 50%; /* Makes the image circular */
+    margin-right: 10px; /* Space between image and username */
+    vertical-align: middle; /* Aligns with the text */
+}
+
+.recipe-user-info {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    margin-bottom: 10px; /* Space below username */
+}
+
+.recipe-user {
+    background-color: transparent; /* Removes any background */
+    color: inherit; /* Inherits the text color from the parent */
+    text-decoration: none; /* No underline by default */
+    padding: 0; /* Removes any padding */
+    margin: 0; /* Removes any margin */
+    border: none; /* Removes any borders */
+}
+
+.recipe-user:hover {
+    text-decoration: underline; /* Underline on hover */
+}
