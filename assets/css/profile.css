@@ -5,12 +5,13 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin: 20px;
     padding: 0;
+    background-color: white;
 }
 .navbar {
-    background-color: #333;
+    background-color:  #325e8b;
     color: white;
     position: fixed;
     top: 0;
@@ -19,11 +20,14 @@ body {
     width: 200px;
     overflow: auto;
     overflow-x: hidden;
+    font-size: large;
+    padding-top: 1.5rem;
 }
 
 .navbar ul {
     list-style-type: none;
     width: 100%;
+    
 }
 
 .navbar li a {
@@ -34,7 +38,7 @@ body {
 }
 
 .navbar li a:hover {
-    background-color: #555;
+    background-color: #000000;
 }
 
 .profile-content {
@@ -66,13 +70,15 @@ body {
 button{
     margin: 20px 0;
     border-radius: 5px;
-    background-color: #aecfcf;
+    background-color: #325e8b;
     padding: 10px;
     transition: background-color 0.3s; 
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 button:hover{
-    background-color: #89a6a6;
+    background-color: #325e8b;
 }
 
 .username {
@@ -97,6 +103,7 @@ h3{
 .pinned-recipes {
     flex-basis: 20%; /*takes up 20% of the space...can change this */
     max-width: 20%; /*ensures it doesn't grow larger than 20% */
+    font-size: large;
 }
 
 .recipes-container {
@@ -104,6 +111,7 @@ h3{
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
     gap: 20px; /* Space between cards */
     padding: 20px; /* Padding around the grid */
+    font-size: large;
 }
 
 .recipe-card {
@@ -119,8 +127,8 @@ h3{
 }
 
 .recipe-title {
-    background-color: #aecfcf; /* Desaturated blue background for title */
-    color: #1e2a37; /* Navy blue text color for title */
+    background-color: #325e8b; /* Desaturated blue background for title */
+    color: #dfdfdf; /* Navy blue text color for title */
     padding: 16px;
     margin: 0;
     font-size: 1.5em; /* Larger title font */
@@ -128,7 +136,7 @@ h3{
 
 .recipe-link {
     text-decoration: none; /* No underline */
-    color: #2C3E50; /* Navy blue text color to match the title */
+    color: #ececed; /* Navy blue text color to match the title */
     display: block; /* Makes the whole title area clickable */
 }
 
@@ -158,7 +166,8 @@ h3{
 }
 
 .tag-link:hover {
-    background-color: #aecfcf; /* Slightly darker on hover for visual feedback */
+    background-color: #325e8b; /* Slightly darker on hover for visual feedback */
+    color: white;
 }
 
 
