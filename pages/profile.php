@@ -12,14 +12,38 @@ include '../db/config.php'; // database config file
 //variable to store user's recipes
 $user_recipes = [];
 
-//fetch user information based on session user_id
+// Determine which user's profile to show
+$profileUsername = isset($_GET['user']) ? $_GET['user'] : '';
 $userId = $_SESSION["user_id"];
-$stmt = $conn->prepare("SELECT username, profile_pic FROM users WHERE user_id = ?");
-$stmt->bind_param("i", $userId);
-$stmt->execute();
-$stmt->bind_result($username, $profilePic);
-$stmt->fetch();
-$stmt->close();
+
+// If a username is provided in the URL, override the profile being viewed
+if ($profileUsername != '') {
+    $stmt = $conn->prepare("SELECT user_id, username, profile_pic FROM users WHERE username = ?");
+    $stmt->bind_param("s", $profileUsername);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($user = $result->fetch_assoc()) {
+        $userId = $user['user_id'];
+        $username = $user['username'];
+        $profilePic = $user['profile_pic'];
+    } else {
+        // Handle case where no user is found
+        echo "No user found.";
+        exit; // or you can redirect to a default page
+    }
+    $stmt->close();
+} else {
+    // Fetch user information based on session user_id (default case)
+    $stmt = $conn->prepare("SELECT username, profile_pic FROM users WHERE user_id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($username, $profilePic);
+    $stmt->fetch();
+    $stmt->close();
+}
+
+// Continue with fetching user's and pinned recipes as before...
+
 
 //fetch user's recipes from the database
 $stmt = $conn->prepare("SELECT recipe_id, title, ingredients, amounts, directions, tags FROM recipes WHERE user_id = ?");
