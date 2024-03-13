@@ -9,18 +9,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 $searched_recipes = [];
 
-if (isset($_GET["tag"]) || isset($_GET["title"])){
-    $searchTag = '%' . $_GET["tag"] . '%';
-    // $searchTitle = '%' . $_GET["title"] . '%';
-    $stmt = $conn->prepare("SELECT recipe_id, title, ingredients, amounts, directions, tags FROM recipes WHERE tags LIKE ?");
-    $stmt->bind_param("s", $searchTag);
-    $stmt->execute();
-    $result = $stmt->get_result();
+$search_term = '%' . (isset($_GET["search"]) ? $_GET["search"] : '') . '%';
+$search_type = isset($_GET["search_type"]) ? $_GET["search_type"] : 'tag';
 
-    $searched_recipes = $result->fetch_all(MYSQLI_ASSOC);
-    $stmt->close();
+if ($search_type == 'tag') {
+    $stmt = $conn->prepare("SELECT recipe_id, title, ingredients, amounts, directions, tags FROM recipes WHERE tags LIKE ?");
+} else {
+    $stmt = $conn->prepare("SELECT recipe_id, title, ingredients, amounts, directions, tags FROM recipes WHERE title LIKE ?");
 }
-$conn->close();
+
+$stmt->bind_param("s", $search_term);
+$stmt->execute();
+$result = $stmt->get_result();
+$searched_recipes = $result->fetch_all(MYSQLI_ASSOC);
+$stmt->close();
+
+
 ?>
 
 
@@ -44,8 +48,14 @@ $conn->close();
         </ul>
     </nav>
     <div class="search-container">
-        <form action="search.php" method="get">
-            <input type="text" id="search-input" placeholder="Search by tags or title..." name="tag">
+        <form onsubmit="performSearch(); return true;">
+            <input type="text" id="search-input" placeholder="Search recipes..." name="search" oninput="performSearch()">
+            <div>
+                <input type="radio" id="tag" name="search_type" value="tag" checked onchange="performSearch()">
+                <label for="tag">Tag</label>
+                <input type="radio" id="title" name="search_type" value="title">
+                <label for="title">Title</label>
+            </div>
             <button type="submit">Search</button>
         </form>
     </div>
@@ -64,7 +74,7 @@ $conn->close();
                     </h4>
                     <div class="recipe-tags">
                         <?php
-                        $tags = explode(',', $recipe["tags"]); // Split tags into an array
+                        $tags = explode(',', $recipe["tags"]); //split tags into an array
                         foreach ($tags as $tag) {
                             echo "<a href='search.php?tag=" . urlencode(trim($tag)) . "' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a>"; // Display each tag as a link
                         }

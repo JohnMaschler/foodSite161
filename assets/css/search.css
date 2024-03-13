@@ -53,12 +53,13 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    margin-bottom: 20px;
 }
 
 button {
     width: 100px;
     padding: 10px;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     background-color: #5cb85c;
     color: white;
     border: none;
@@ -80,8 +81,6 @@ button:hover {
     border-radius: 4px;
 }
 
-
-
 .recipes-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
@@ -95,6 +94,7 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden; /* Ensures nothing spills out of the card */
     transition: transform 0.3s ease-in-out;
+    margin-bottom: 10px;
 }
 
 .recipe-card:hover {

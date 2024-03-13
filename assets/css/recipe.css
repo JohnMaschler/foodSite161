@@ -1,18 +1,22 @@
 body, * {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
-    margin: 20px;
+    /* margin: 20px; */
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+.main-container {
+    margin-left: 200px; /*same width as the navbar */
+    padding: 20px;
+    max-width: calc(100% - 200px); /*adjust the width based on the navbar width */
+}
+
 .recipe {
     max-width: 800px;
     margin: auto;
-    margin-left: 200px; /* same as navbar width */
     padding: 20px;
-    align-items: center;
 }
 
 .recipe-title {
@@ -35,22 +39,13 @@ body, * {
     padding: 20px;
     border-radius: 8px;
 }
-.tag {
-    display: inline-block;
-    background: #C5E1A5;
-    padding: 5px 10px;
-    border-radius: 5px;
-    margin-right: 5px;
-    margin-top: 5px;
-    font-size: 0.8em;
-}
 
 .recipe-image {
     display: block;
-    max-width: 40%; /* ensures image is not larger than its container */
-    height: auto; /* maintains aspect ratio */
+    max-width: 40%;
+    height: auto; /* maintain aspect ratio */
     border-radius: 8px; /* optional: rounds the corners of the image??? do we want this*/
-    margin: 0 auto 20px; /* centers the image and adds space below */
+    margin: 0 auto 20px;
 }
 
 .navbar {
@@ -91,4 +86,29 @@ button{
 
 button:hover{
     background-color: #89a6a6;
+}
+
+.tag-link {
+    background-color: #ffffff; /* Pastel green background for tags */
+    color: #000000; /* Dark grey text color for tags */
+    padding: 5px 10px;
+    border-radius: 15px; /* More rounded corners for bubble effect */
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 0.8em;
+    text-decoration: none; /* Remove underline from links */
+    border: 1px solid #465e48; /* Border for tags */
+    transition: background-color 0.3s; /* Smooth background transition on hover */
+}
+
+.tag-link:hover {
+    background-color: #aecfcf; /* Slightly darker on hover for visual feedback */
+}
+
+@media (max-width: 1000px) { /* Or any appropriate width */
+    .main-container {
+        margin-left: 0;
+        max-width: 100%;
+    }
 }

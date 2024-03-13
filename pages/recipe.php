@@ -44,6 +44,7 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
             <li><a href="profile.php">Profile</a></li>
         </ul>
     </nav>
+    <div class="main-container">
     <!-- the recipe array has been filled by the PHP code above -->
     <article class="recipe">
         <h1 class="recipe-title"><?php echo htmlspecialchars($recipe['title']); ?></h1>
@@ -80,10 +81,11 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
             <p><?php
                 $tags = explode(',', $recipe['tags']);
                 foreach ($tags as $tag) {
-                    echo "<span class='tag'>" . htmlspecialchars(trim($tag)) . "</span> ";
-                }
+                    echo "<a href='search.php?tag=" . urlencode(trim($tag)) . "' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a> ";
+                }                
             ?></p>
         </section>
     </article>
+    </div>
 </body>
 </html>
