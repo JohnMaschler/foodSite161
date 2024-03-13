@@ -1,31 +1,36 @@
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body Styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: #f7f7f7; /* Light gray background */
+    color: #333; /* Dark gray text */
     line-height: 1.6;
-    /* padding: 20px; */
-    margin: 0;
-    padding: 0;
+    margin-top: 0; /* Remove margin from the top */
 }
 
-
-
-header, h1 {
-    color: #333;
-    padding: 20px 0;
+/* Header Styles */
+header {
+    background-color: #011b35; /* Slightly darker background for title */
+    color: #fff;
     text-align: center;
-    margin: 0;
+    padding: 20px 0; /* Padding for title box */
 }
 
+header h1 {
+    margin: 0; /* Remove margin */
+    font-size: 3em; /* Larger font size for header */
+}
+
+/* Navbar Styles */
 .navbar {
     background: #eaeaea;
-    height: 100px;
+    height: 100px; /* Increased height for navigation */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,26 +39,26 @@ header, h1 {
 .navbar ul {
     list-style-type: none;
     padding: 0;
-    display: flex;
-    justify-content: center;
     margin: 0;
+    display: flex; /* Display buttons horizontally */
 }
 
 .navbar ul li {
-    margin: 0 10px;
+    margin: 0 20px; /* Increased margin between buttons */
 }
 
 .navbar ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 1.2em;
-    padding: 10px 15px;
-    border: 1px solid;
+    font-size: 1.5em; /* Larger font size for buttons */
+    padding: 15px 40px; /* Increased padding for buttons */
+    border: 2px solid transparent; /* Thicker border */
+    border-radius: 15px; /* Rounded corners */
     transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .navbar ul li a:hover {
-    border: 1px solid #333;
-    border-radius: 5px;
-    background-color: #f4f4f4;
+    border-color: #333;
+    background-color: #fff; /* White background on hover */
+    color: #146ac6; /* Light green text on hover */
 }
