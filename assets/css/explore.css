@@ -172,3 +172,8 @@ body {
 .recipe-user:hover {
     text-decoration: underline; /* Underline on hover */
 }
+
+.load-more {
+    text-align: center; /* Centers the text inside the div */
+    margin: 20px 0; /* Adds some space above and below the div */
+}
