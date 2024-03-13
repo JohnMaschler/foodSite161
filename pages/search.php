@@ -9,9 +9,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 $searched_recipes = [];
 
-if (isset($_GET["tag"])){
+if (isset($_GET["tag"]) || isset($_GET["title"])){
     $searchTag = '%' . $_GET["tag"] . '%';
-    // $searchTitle = $_GET["title"];
+    // $searchTitle = '%' . $_GET["title"] . '%';
     $stmt = $conn->prepare("SELECT recipe_id, title, ingredients, amounts, directions, tags FROM recipes WHERE tags LIKE ?");
     $stmt->bind_param("s", $searchTag);
     $stmt->execute();

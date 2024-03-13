@@ -32,6 +32,7 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($recipe['title']); ?> - Recipe</title>
     <link rel="stylesheet" href="../assets/css/recipe.css">
+    <script defer src="../assets/js/recipe.js"></script>
 </head>
 <body>
 
@@ -54,7 +55,7 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
         <?php if ($_SESSION['user_id'] != $recipe['user_id']): ?>
             <form method="post" action="pin_recipe.php">
                 <input type="hidden" name="recipe_id" value="<?php echo $recipeId; ?>">
-                <button type="submit" name="pin_recipe">Pin Recipe</button>
+                <button id="pin" type="submit" name="pin_recipe">Pin Recipe</button>
             </form>
         <?php endif; ?>
 
