@@ -4,8 +4,15 @@
     padding: 0;
 }
 
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
 .navbar {
-    background-color: #333;
+    background-color:  #325e8b;
     color: white;
     position: fixed;
     top: 0;
@@ -13,6 +20,9 @@
     left: 0;
     width: 200px;
     overflow: auto;
+    overflow-x: hidden;
+    font-size: large;
+    padding-top: 1.5rem;
 }
 
 .navbar ul {
@@ -28,19 +38,12 @@
 }
 
 .navbar li a:hover {
-    background-color: #555;
-}
-
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 20px;
-    padding: 0;
-    background-color: #f4f4f4;
+    background-color: #000000;
 }
 
 .search-container {
     max-width: 600px;
-    margin: 30px auto;
+    margin: 100px auto; /* Center the container vertically and horizontally */
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -48,28 +51,29 @@ body {
 }
 
 #search-input {
-    width: calc(100% - 110px);
+    width: calc(100% - 20px);
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #acacac;
     border-radius: 4px;
     font-size: 16px;
     margin-bottom: 20px;
 }
 
 button {
-    width: 100px;
+    width: 100%;
     padding: 10px;
-    /* margin-left: 10px; */
-    background-color: #5cb85c;
+    background-color: #325e8b;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    transition: background-color 0.3s;
+    margin-top: 1rem;
 }
 
 button:hover {
-    background-color: #4cae4c;
+    background-color: #000000;
 }
 
 #search-results {
@@ -83,65 +87,66 @@ button:hover {
 
 .recipes-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
-    gap: 20px; /* Space between cards */
-    padding: 20px; /* Padding around the grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .recipe-card {
-    background: #F7F7F7; /* Light grey background for the card */
+    background: #F7F7F7;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    overflow: hidden; /* Ensures nothing spills out of the card */
+    overflow: hidden;
     transition: transform 0.3s ease-in-out;
     margin-bottom: 10px;
 }
 
 .recipe-card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
+    transform: translateY(-5px);
 }
 
 .recipe-title {
-    background-color: #aecfcf; /* Desaturated blue background for title */
-    color: #1e2a37; /* Navy blue text color for title */
+    background-color: #325e8b;
+    color: white;
     padding: 16px;
     margin: 0;
-    font-size: 1.5em; /* Larger title font */
+    font-size: 1.5em;
 }
 
 .recipe-link {
-    text-decoration: none; /* No underline */
-    color: #2C3E50; /* Navy blue text color to match the title */
-    display: block; /* Makes the whole title area clickable */
+    text-decoration: none;
+    color: white;
+    display: block;
 }
 
 .recipe-link:hover {
-    text-decoration: underline; /* Adds an underline on hover for visual feedback */
+    text-decoration: underline;
 }
 
 .recipe-tags {
     padding: 16px;
-    line-height: 1.6; /* More readable line spacing */
-    background-color: #F7F7F7; /* Same as card background */
-    border-top: 1px solid #ddd; /* Separator line */
+    line-height: 1.6;
+    background-color: #F7F7F7;
+    border-top: 1px solid #ddd;
 }
 
 .tag-link {
-    background-color: #ffffff; /* Pastel green background for tags */
-    color: #4C4C4C; /* Dark grey text color for tags */
+    background-color: #ffffff;
+    color: #4C4C4C;
     padding: 5px 10px;
-    border-radius: 15px; /* More rounded corners for bubble effect */
+    border-radius: 15px;
     display: inline-block;
     margin-right: 5px;
     margin-bottom: 5px;
     font-size: 0.8em;
-    text-decoration: none; /* Remove underline from links */
-    border: 1px solid #465e48; /* Border for tags */
-    transition: background-color 0.3s; /* Smooth background transition on hover */
+    text-decoration: none;
+    border: 1px solid #465e48;
+    transition: background-color 0.3s;
 }
 
 .tag-link:hover {
-    background-color: #aecfcf; /* Slightly darker on hover for visual feedback */
+    background-color: #325e8b;
+    color: white;
 }
 
 /* Responsive adjustments */
@@ -153,6 +158,6 @@ button:hover {
 
 @media (max-width: 480px) {
     .recipes-container {
-        grid-template-columns: 1fr; /* Full width cards on mobile */
+        grid-template-columns: 1fr;
     }
 }
