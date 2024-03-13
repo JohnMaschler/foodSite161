@@ -61,6 +61,7 @@ $stmt->close();
                     <a href="search.php?search=<?= urlencode(trim($tag)) ?>&search_type=tag" class="tag-link"><?= htmlspecialchars(trim($tag)) ?></a>
                 <?php endforeach; ?>
             </div>
+
             <p class="recipe-ingredients">Includes: <?= implode(', ', array_slice(explode(',', $recipe['ingredients']), 0, 2)) ?></p>
             <a href="recipe.php?recipe_id=<?= $recipe['recipe_id'] ?>" class="see-more-link">See More</a>
         </div>
@@ -72,7 +73,9 @@ $stmt->close();
 
     <!-- Load More Button -->
     <div class="load-more">
-        <?php if (count($recipes) == $limit): ?>
+        <?php if (count($recipes) < $limit): ?>
+            <p>That's all the posts we have for now.</p>
+        <?php else: ?>
             <a href="explore.php?page=<?= $page + 1 ?>" class="load-more-button">Load More</a>
         <?php endif; ?>
     </div>
