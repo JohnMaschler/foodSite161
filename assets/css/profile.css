@@ -54,6 +54,8 @@ body {
 .recipes-section{
     display: flex;
     gap: 20px;
+    max-width: calc(100% - 200px); /* adjust based on the navbar width and any desired padding */
+    flex-wrap: wrap; /* allows items to wrap if they don't fit in a single row */
 }
 
 .user-recipes{
@@ -175,11 +177,12 @@ h3{
 /*responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .recipes-section {
-        flex-direction: column; /*stack them on smaller screens */
+        flex-direction: column;
+        max-width: 100%;
     }
     
     .user-recipes, .pinned-recipes {
-        flex-basis: auto; /*let them take natural size */
-        max-width: 100%; /*full width on small screens */
+        flex-basis: auto; /* Allow them to naturally fit the container */
+        max-width: 100%; /* Use full width on smaller screens */
     }
 }
