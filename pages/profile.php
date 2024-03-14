@@ -1,6 +1,8 @@
 <?php
 session_start(); //start the session
 
+
+
 //check if the user is logged in, if not then redirect to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
@@ -120,7 +122,7 @@ $conn->close();
             <!--button that triggers the file input -->
             <button onclick="document.getElementById('profile-pic-input').click()">Change Profile Picture</button>
 
-            <h4>Users have saved <?php echo htmlspecialchars($total_pins)?> of your recipes</h4>
+            <h4>Users have saved <?php echo htmlspecialchars($total_pins ?? '0')?> of your recipes</h4>
             <br />
 
             <hr />
