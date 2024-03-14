@@ -52,11 +52,11 @@ if (isset($_GET['recipe_id']) && is_numeric($_GET['recipe_id'])) {
             <img src="<?php echo htmlspecialchars($recipe['image_path']); ?>" alt="Image of <?php echo htmlspecialchars($recipe['title']); ?>" class="recipe-image">
         <?php endif; ?>
         <p class="author-date">Posted by <?php echo htmlspecialchars($recipe['username']); ?> on <?php echo date('F j, Y', strtotime($recipe['posted_at'])); ?></p>
-        <!-- Inside your <article class="recipe"> after the author-date paragraph -->
+        <!-- Inside <article class="recipe"> after the author-date paragraph -->
         <?php if ($_SESSION['user_id'] != $recipe['user_id']): ?>
             <form method="post" action="pin_recipe.php">
                 <input type="hidden" name="recipe_id" value="<?php echo $recipeId; ?>">
-                <button id="pin" type="submit" name="pin_recipe">Pin Recipe</button>
+                <button id="pin" type="submit" name="pin_recipe">Save Recipe</button>
             </form>
         <?php endif; ?>
 

@@ -68,6 +68,27 @@ $pinned_result = $pinned_stmt->get_result();
 $pinned_recipes = $pinned_result->fetch_all(MYSQLI_ASSOC);
 $pinned_stmt->close();
 
+$total_pins = 0; //default of 0 pinned recipes
+
+//query to get number of pinned recipes for the user
+$pinned_count = $conn->prepare("
+    select sum(pinned_count) as total_pins
+    from (
+        select recipes.recipe_id, COUNT(pinned_recipes.recipe_id) as pinned_count
+        from recipes
+        left join pinned_recipes on recipes.recipe_id = pinned_recipes.recipe_id
+        where recipes.user_id = ?
+        group by recipes.recipe_id
+    ) as pin_counts
+");
+$pinned_count->bind_param("i", $userId);
+$pinned_count->execute();
+$resultCount = $pinned_count->get_result();
+if ($row = $resultCount->fetch_assoc()){
+    $total_pins = $row['total_pins'];
+}
+$pinned_count->close();
+
 $conn->close();
 ?>
 
@@ -93,11 +114,14 @@ $conn->close();
     <main class="profile-content">
         <section class="user-info">
             <!--prepend project so it doesn't add '/pages' to the path-->
-            <img src="/csen161finalproj/<?php echo htmlspecialchars($profilePic); ?>" alt="———————————————————————————press the button below to add an image" class="profile-pic">
+            <img src="/csen161finalproj/<?php echo htmlspecialchars($profilePic); ?>" class="profile-pic">
             <h2 class="username"><?php echo htmlspecialchars($username); ?></h2>
             
             <!--button that triggers the file input -->
             <button onclick="document.getElementById('profile-pic-input').click()">Change Profile Picture</button>
+
+            <h4>Users have saved <?php echo htmlspecialchars($total_pins)?> of your recipes</h4>
+            <br />
 
             <hr />
             
@@ -132,7 +156,7 @@ $conn->close();
                 </div>
             </section>
             <section class="pinned-recipes">
-                <h3>Recipes You've Pinned</h3>
+                <h3>Saved Recipes</h3>
                 <div class="recipes-container">
                     <?php foreach ($pinned_recipes as $recipe): ?>
                         <div class="recipe-card">

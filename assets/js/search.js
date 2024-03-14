@@ -27,7 +27,7 @@ function performSearch() {
         xhr.open('GET', 'search_backend.php?search=' + encodeURIComponent(searchInput) + '&search_type=' + searchType, true);
         xhr.send();
     } else {
-        // Clear results if input is empty or too short
+        // Clear results if input is empty
         document.getElementById('search-results').innerHTML = '';
     }
 }
