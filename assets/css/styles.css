@@ -1,4 +1,3 @@
-/* styles.css */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -37,7 +36,7 @@ input[type="email"] {
     margin-top: 5px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-sizing: border-box; /* Makes sure the padding doesn't affect the overall width */
+    box-sizing: border-box;
 }
 
 button {

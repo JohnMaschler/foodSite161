@@ -1,36 +1,32 @@
-/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body Styles */
 body {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    background-color: #f7f7f7; /* Light gray background */
-    color: #333; /* Dark gray text */
+    background-color: #f7f7f7;
+    color: #333;
     line-height: 1.6;
-    margin-top: 0; /* Remove margin from the top */
+    margin-top: 0;
 }
 
-/* Header Styles */
 header {
-    background-color: #011b35; /* Slightly darker background for title */
+    background-color: #011b35;
     color: #fff;
     text-align: center;
-    padding: 20px 0; /* Padding for title box */
+    padding: 20px 0;
 }
 
 header h1 {
-    margin: 0; /* Remove margin */
-    font-size: 3em; /* Larger font size for header */
+    margin: 0;
+    font-size: 3em;
 }
 
-/* Navbar Styles */
 .navbar {
     background: #eaeaea;
-    height: 100px; /* Increased height for navigation */
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,26 +36,25 @@ header h1 {
     list-style-type: none;
     padding: 0;
     margin: 0;
-    display: flex; /* Display buttons horizontally */
+    display: flex;
 }
 
 .navbar ul li {
-    margin: 0 20px; /* Increased margin between buttons */
+    margin: 0 20px;
 }
 
 .navbar ul li a {
     text-decoration: none;
     color: #333;
-    font-size: 1.5em; /* Larger font size for buttons */
-    padding: 15px 40px; /* Increased padding for buttons */
-    border: 2px solid transparent; /* Thicker border */
-    border-radius: 15px; /* Rounded corners */
+    font-size: 1.5em;
+    padding: 15px 40px;
+    border: 2px solid transparent;
+    border-radius: 15px;
     transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .navbar ul li a:hover {
     border-color: #333;
-    background-color: #fff; /* White background on hover */
-    color: #146ac6; /* Light green text on hover */
+    background-color: #fff;
+    color: #146ac6;
 }
-

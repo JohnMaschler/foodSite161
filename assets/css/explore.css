@@ -42,7 +42,7 @@ body {
 }
 
 .recipe-feed {
-    margin-left: 220px; /* Adjusted from profile content to better fit the recipe feed */
+    margin-left: 220px;
     padding: 20px;
 }
 
@@ -51,7 +51,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     overflow: hidden;
-    margin-bottom: 20px; /* Space between recipe cards */
+    margin-bottom: 20px;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -62,8 +62,8 @@ body {
 .recipe-title, .recipe-user, .recipe-tags, .recipe-ingredients {
     padding: 15px;
     margin: 0;
-    background-color: #ffffff; /* Lighter background for readability */
-    border-bottom: 1px solid #ddd; /* Add separation between elements */
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
 }
 
 .recipe-title {
@@ -73,12 +73,12 @@ body {
 }
 
 .recipe-image {
-    width: 300px; /* Adjust based on your preference */
-    max-width: 100%; /* Ensures image is not larger than the card */
-    height: auto; /* Maintain aspect ratio */
+    width: 300px;
+    max-width: 100%;
+    height: auto;
     border-bottom: 1px solid #ddd;
-    display: block; /* Centers the image in the card */
-    margin: 0 auto; /* Centers the image */
+    display: block;
+    margin: 0 auto;
 }
 
 .tag-link {
@@ -100,10 +100,10 @@ body {
 }
 
 .recipe-ingredients {
-    padding-left: 15px; /* Align with other content */
+    padding-left: 15px;
     padding-bottom: 15px;
-    background-color: #ffffff; /* Match other card elements */
-    border-bottom: 1px solid #ddd; /* Consistent with other elements */
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
 }
 
 .see-more-link {
@@ -121,7 +121,7 @@ body {
     background-color: #89a6a6;
 }
 
-/* Adjustments for smaller screens */
+
 @media (max-width: 768px) {
     .recipe-feed {
         margin-left: 0;
@@ -129,7 +129,7 @@ body {
     }
 
     .navbar {
-        position: relative; /* Change nav position on smaller screens */
+        position: relative;
         width: 100%;
         height: auto;
         top: 0;
@@ -141,7 +141,7 @@ body {
     }
 
     .navbar li a {
-        padding: 10px; /* Reduce padding for smaller screens */
+        padding: 10px;
     }
 }
 
@@ -150,33 +150,33 @@ body {
 
 
 .mini-profile-pic {
-    width: 30px; /* Adjust based on your design */
-    height: 30px; /* Adjust based on your design */
-    border-radius: 50%; /* Makes the image circular */
-    margin-right: 10px; /* Space between image and username */
-    vertical-align: middle; /* Aligns with the text */
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 .recipe-user-info {
     display: flex;
-    align-items: center; /* Aligns items vertically */
-    margin-bottom: 10px; /* Space below username */
+    align-items: center;
+    margin-bottom: 10px;
 }
 
 .recipe-user {
-    background-color: transparent; /* Removes any background */
-    color: inherit; /* Inherits the text color from the parent */
-    text-decoration: none; /* No underline by default */
-    padding: 0; /* Removes any padding */
-    margin: 0; /* Removes any margin */
-    border: none; /* Removes any borders */
+    background-color: transparent;
+    color: inherit;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
 .recipe-user:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline;
 }
 
 .load-more {
-    text-align: center; /* Centers the text inside the div */
-    margin: 20px 0; /* Adds some space above and below the div */
+    text-align: center;
+    margin: 20px 0;
 }

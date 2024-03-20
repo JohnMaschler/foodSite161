@@ -2,7 +2,6 @@
 session_start();
 include '../db/config.php';
 
-//if user not logged in, send to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
@@ -10,27 +9,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 $imagePath = '';
 
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $title = $_POST['title'];
-    // Ingredients and quantities are sent as arrays
-    $ingredients = implode(", ", $_POST['ingredient_name']); // This will create a comma-separated string of ingredients
-    $amounts = implode(", ", $_POST['ingredient_qty']); // This will create a comma-separated string of quantities
+    $ingredients = implode(", ", $_POST['ingredient_name']);
+    $amounts = implode(", ", $_POST['ingredient_qty']);
     $directions = $_POST['directions'];
     $tags = $_POST['tags'];
-    $userId = $_SESSION["user_id"]; // User id is stored in session
+    $userId = $_SESSION["user_id"];
     
-    //if they add an image, process it
     if (isset($_FILES['recipeImage']) && $_FILES['recipeImage']['error'] == 0){
         $target_directory = "../uploads/";
         $imageFileType = strtolower(pathinfo($_FILES['recipeImage']['name'], PATHINFO_EXTENSION));
         $target_file = $target_directory . uniqid() . "." . $imageFileType;
 
-        //image validation
         $checkImg = getimagesize($_FILES["recipeImage"]["tmp_name"]);
         if($checkImg !== false && $_FILES["recipeImage"]["size"] <= 5000000 && in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])){
             if (move_uploaded_file($_FILES["recipeImage"]["tmp_name"], $target_file)){
-                //image path that will be stored in database
                 $imagePath = $target_file;
                 echo $imagePath;
             }
@@ -46,17 +40,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     }
 
-    // Prepare an INSERT statement to insert info into recipes table
     $stmt = $conn->prepare("INSERT INTO recipes (user_id, title, ingredients, amounts, directions, tags, image_path) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("issssss", $userId, $title, $ingredients, $amounts, $directions, $tags, $imagePath);
 
-    // Attempt to execute the statement
     if ($stmt->execute()){
-        // Redirect to the profile page upon success
         header("Location: profile.php");
         exit;
     } else {
-        // If execution failed, output an error message
         echo "Recipe failed to upload: " . htmlspecialchars($conn->error);
     }
     $stmt->close();

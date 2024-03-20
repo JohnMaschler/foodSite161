@@ -8,9 +8,9 @@ body, * {
 }
 
 .main-container {
-    margin-left: 200px; /*same width as the navbar */
+    margin-left: 200px;
     padding: 20px;
-    max-width: calc(100% - 200px); /*adjust the width based on the navbar width */
+    max-width: calc(100% - 200px);
 }
 
 .recipe {
@@ -43,8 +43,8 @@ body, * {
 .recipe-image {
     display: block;
     max-width: 40%;
-    height: auto; /* maintain aspect ratio */
-    border-radius: 8px; /* optional: rounds the corners of the image??? do we want this*/
+    height: auto;
+    border-radius: 8px;
     margin: 0 auto 20px;
 }
 
@@ -94,25 +94,25 @@ button:hover{
 }
 
 .tag-link {
-    background-color: #ffffff; /* Pastel green background for tags */
-    color: #000000; /* Dark grey text color for tags */
+    background-color: #ffffff;
+    color: #000000;
     padding: 5px 10px;
-    border-radius: 15px; /* More rounded corners for bubble effect */
+    border-radius: 15px;
     display: inline-block;
     margin-right: 5px;
     margin-bottom: 5px;
     font-size: 0.8em;
-    text-decoration: none; /* Remove underline from links */
-    border: 1px solid #465e48; /* Border for tags */
-    transition: background-color 0.3s; /* Smooth background transition on hover */
+    text-decoration: none;
+    border: 1px solid #465e48;
+    transition: background-color 0.3s;
 }
 
 .tag-link:hover {
-    background-color: #325e8b; /* Slightly darker on hover for visual feedback */
+    background-color: #325e8b;
     color: white;
 }
 
-@media (max-width: 1000px) { /* Or any appropriate width */
+@media (max-width: 1000px) {
     .main-container {
         margin-left: 0;
         max-width: 100%;

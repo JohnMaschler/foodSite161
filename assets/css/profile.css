@@ -42,7 +42,7 @@ body {
 }
 
 .profile-content {
-    margin-left: 200px; /* Same as navbar width */
+    margin-left: 200px;
     padding: 20px;
 }
 
@@ -54,8 +54,8 @@ body {
 .recipes-section{
     display: flex;
     gap: 20px;
-    max-width: calc(100% - 200px); /* adjust based on the navbar width and any desired padding */
-    flex-wrap: wrap; /* allows items to wrap if they don't fit in a single row */
+    max-width: calc(100% - 200px);
+    flex-wrap: wrap;
 }
 
 .user-recipes{
@@ -105,76 +105,74 @@ h3{
 }
 
 .pinned-recipes {
-    flex-basis: 20%; /*takes up 20% of the space...can change this */
-    max-width: 20%; /*ensures it doesn't grow larger than 20% */
+    flex-basis: 20%;
+    max-width: 20%;
 }
 
 .recipes-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid layout */
-    gap: 20px; /* Space between cards */
-    padding: 20px; /* Padding around the grid */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
     font-size: large;
 }
 
 .recipe-card {
-    background: #F7F7F7; /* Light grey background for the card */
+    background: #F7F7F7;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    overflow: hidden; /* Ensures nothing spills out of the card */
+    overflow: hidden;
     transition: transform 0.3s ease-in-out;
 }
 
 .recipe-card:hover {
-    transform: translateY(-5px); /* Slight lift effect on hover */
+    transform: translateY(-5px);
 }
 
 .recipe-title {
-    background-color: #325e8b; /* Desaturated blue background for title */
-    color: #dfdfdf; /* Navy blue text color for title */
+    background-color: #325e8b;
+    color: #dfdfdf;
     padding: 16px;
     margin: 0;
-    font-size: 1.5em; /* Larger title font */
+    font-size: 1.5em;
 }
 
 .recipe-link {
-    text-decoration: none; /* No underline */
-    color: #ececed; /* Navy blue text color to match the title */
-    display: block; /* Makes the whole title area clickable */
+    text-decoration: none;
+    color: #ececed;
+    display: block;
 }
 
 .recipe-link:hover {
-    text-decoration: underline; /* Adds an underline on hover for visual feedback */
+    text-decoration: underline;
 }
 
 .recipe-tags {
     padding: 16px;
-    line-height: 1.6; /* More readable line spacing */
-    background-color: #F7F7F7; /* Same as card background */
-    border-top: 1px solid #ddd; /* Separator line */
+    line-height: 1.6;
+    background-color: #F7F7F7;
+    border-top: 1px solid #ddd;
 }
 
 .tag-link {
-    background-color: #ffffff; /* Pastel green background for tags */
-    color: #4C4C4C; /* Dark grey text color for tags */
+    background-color: #ffffff;
+    color: #4C4C4C;
     padding: 5px 10px;
-    border-radius: 15px; /* More rounded corners for bubble effect */
+    border-radius: 15px;
     display: inline-block;
     margin-right: 5px;
     margin-bottom: 5px;
     font-size: 0.8em;
-    text-decoration: none; /* Remove underline from links */
-    border: 1px solid #465e48; /* Border for tags */
-    transition: background-color 0.3s; /* Smooth background transition on hover */
+    text-decoration: none;
+    border: 1px solid #465e48;
+    transition: background-color 0.3s;
 }
 
 .tag-link:hover {
-    background-color: #325e8b; /* Slightly darker on hover for visual feedback */
+    background-color: #325e8b;
     color: white;
 }
 
-
-/*responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .recipes-section {
         flex-direction: column;
@@ -182,7 +180,7 @@ h3{
     }
     
     .user-recipes, .pinned-recipes {
-        flex-basis: auto; /* Allow them to naturally fit the container */
-        max-width: 100%; /* Use full width on smaller screens */
+        flex-basis: auto;
+        max-width: 100%;
     }
 }

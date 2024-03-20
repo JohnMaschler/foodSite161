@@ -1,9 +1,7 @@
 <?php
-//start output buffering (don't forget to flush it at the end)
 ob_start();
-include '../db/config.php'; // Adjust the path as needed
+include '../db/config.php';
 
-//check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = htmlspecialchars($_POST['username']);
     $email = htmlspecialchars($_POST['email']);
@@ -12,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($password !== $confirmPassword) {
         $error_message = "Passwords do not match.";
-    } else {//user_id is the primary key
+    } else {
         $stmt = $conn->prepare("SELECT user_id FROM users WHERE username=? OR email=? LIMIT 1");
         $stmt->bind_param("ss", $username, $email);
         $stmt->execute();
@@ -23,13 +21,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($stmt->num_rows > 0) {
             $error_message = "Username or Email already exists.";
         } else {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);//hash the password
-            //insert the info into the USERS table
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
             $stmt->bind_param("sss", $username, $email, $hashedPassword);
             if ($stmt->execute()) {
-                //redirect on successful registration
-                //user will then login
                 header("Location: login.php");
                 exit;
             } else {
@@ -52,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <h2>Register</h2>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"> <!-- this will later handle the registration logic -->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>

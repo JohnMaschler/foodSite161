@@ -35,7 +35,6 @@ $stmt->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search - Foreign Flavors</title>
     <link rel="stylesheet" href="../assets/css/search.css">
-    <!-- <link rel="stylesheet" href="../assets/css/styles.css"> -->
     <script defer src="../assets/js/search.js"></script>
 </head>
 <body>
@@ -60,8 +59,6 @@ $stmt->close();
         </form>
     </div>
 
-    <!-- Results will be displayed here -->
-
     <div id="search-results">
         <h3>My Recipes</h3>
         <div class="recipes-container">
@@ -74,7 +71,7 @@ $stmt->close();
                     </h4>
                     <div class="recipe-tags">
                         <?php
-                        $tags = explode(',', $recipe["tags"]); //split tags into an array
+                        $tags = explode(',', $recipe["tags"]);
                         foreach ($tags as $tag) {
                             echo "<a href='search.php?search=" . urlencode(trim($tag)) . "&search_type=tag' class='tag-link'>" . htmlspecialchars(trim($tag)) . "</a>";
                         }

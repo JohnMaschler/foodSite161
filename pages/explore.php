@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Check if the user is logged in, if not then redirect to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
@@ -9,14 +8,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 include '../db/config.php';
 
-// Define the number of recipes to display per page
 $limit = 15;
 
-// Set the page number
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($page - 1) * $limit;
 
-// Fetch recipes from the database
 $stmt = $conn->prepare("SELECT r.recipe_id, r.title, r.ingredients, r.tags, u.username, u.profile_pic, r.image_path FROM recipes r LEFT JOIN users u ON r.user_id = u.user_id ORDER BY r.posted_at DESC LIMIT ?, ?");
 $stmt->bind_param("ii", $start, $limit);
 $stmt->execute();
@@ -33,7 +29,7 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Recipes</title>
-    <link rel="stylesheet" href="../assets/css/explore.css"> <!-- Ensure you have this CSS for styling -->
+    <link rel="stylesheet" href="../assets/css/explore.css">
 </head>
 <body>
     <nav class="navbar">
@@ -69,9 +65,6 @@ $stmt->close();
     </div>
 
 
-
-
-    <!-- Load More Button -->
     <div class="load-more">
         <?php if (count($recipes) < $limit): ?>
             <p>That's all the posts we have for now.</p>
